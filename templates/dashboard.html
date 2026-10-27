@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="dashboard-page">
+            <div class="dashboard-hero">
+                <div class="hero-text">
+                    <span class="eyebrow">YOUR SECURITY WORKSPACE</span>
+                    <h1>Welcome to <span>PhishGuard</span> 🛡️</h1>
+                    <p>Analyze suspicious URLs and improve your online safety.</p>
+                    <a class="primary-btn" href="/">🔍 Start URL Scan</a>
+                </div>
+                <div class="hero-shield">🛡️</div>
+            </div>
+
+            <h2>Security Overview</h2>
+
+            <div class="dashboard-grid">
+                <div class="feature-card cyan-card">
+                    <div class="card-icon">🔍</div>
+                    <h3>URL Analysis</h3>
+                    <p>Examine website addresses for suspicious patterns.</p>
+                    <span class="card-link">Analyze URLs →</span>
+                </div>
+                <div class="feature-card purple-card">
+                    <div class="card-icon">📊</div>
+                    <h3>Risk Assessment</h3>
+                    <p>Review detected warnings and risk levels.</p>
+                    <span class="card-link">Check risk →</span>
+                </div>
+                <div class="feature-card green-card">
+                    <div class="card-icon">🔐</div>
+                    <h3>Online Safety</h3>
+                    <p>Learn how to protect your sensitive information.</p>
+                    <span class="card-link">Stay safe →</span>
+                </div>
+                <div class="feature-card orange-card">
+                    <div class="card-icon">⚙️</div>
+                    <h3>About PhishGuard</h3>
+                    <p>Learn how the URL checker works.</p>
+                    <span class="card-link">Learn more →</span>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

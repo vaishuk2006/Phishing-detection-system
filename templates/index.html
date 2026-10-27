@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero">
+    <p class="eyebrow">CYBERSECURITY • URL ANALYSIS</p>
+
+    <h1>Phishing Website <span>Detection</span></h1>
+
+    <p class="subtitle">
+        Check suspicious links and examine URL characteristics
+        before deciding whether to trust them.
+    </p>
+
+    <div class="scanner-card">
+        <h2>Analyze a URL</h2>
+        <p>Enter a website address below to check for warning signs.</p>
+
+        <form action="{{ url_for('scan') }}" method="POST">
+            <label for="url">Website URL</label>
+
+            <input
+                type="text"
+                id="url"
+                name="url"
+                placeholder="https://example.com"
+                maxlength="2048"
+                value="{{ submitted_url|default(result.url if result else '') }}"
+                required
+            >
+
+            <button type="submit">Analyze URL →</button>
+        </form>
+
+        <p class="privacy-note">
+            🔒 This demo analyzes the URL text without opening the website.
+        </p>
+    </div>
+</section>
+
+{% if error %}
+<section class="result-card" id="results">
+    <div class="status-banner status-error">
+        <h2>⚠ Scan Error</h2>
+        <p>{{ error }}</p>
+    </div>
+</section>
+{% endif %}
+
+{% if result %}
+<section class="result-card" id="results">
+    <h2>🛡️ Scan Result</h2>
+
+    <div class="status-banner status-{{ result.status_class }}">
+        <h3>{{ result.status }}</h3>
+        <p>{{ result.message }}</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <p>Website URL</p>
+            <h2 class="url-value">{{ result.url }}</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Assessment</p>
+            <h2>{{ result.status }}</h2>
+        </div>
+
+        <div class="stat-card">
+            <p>Risk Level</p>
+            <h2>{{ result.risk }}</h2>
+        </div>
+    </div>
+
+    {% if result.warnings %}
+    <div class="warning-list">
+        <h3>⚠ Warning Signs Detected</h3>
+        <ul>
+            {% for warning in result.warnings %}
+            <li>{{ warning }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+    <div class="no-warnings">
+        ✓ No warning signs were detected by the current rules.
+    </div>
+    {% endif %}
+
+    <h3 class="features-heading">Extracted URL Features</h3>
+
+    <div class="feature-grid">
+        {% for name, value in features.items() %}
+        <div class="feature-item">
+            <span>{{ name }}</span>
+            <strong>{{ value }}</strong>
+        </div>
+        {% endfor %}
+    </div>
+
+    <p class="disclaimer">
+        This is a rule-based demonstration. A low-risk result does not
+        guarantee safety, and a warning does not prove a scam.
+    </p>
+</section>
+{% endif %}
+
+{% endblock %}

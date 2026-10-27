@@ -1,0 +1,74 @@
+
+{% extends "base.html" %}
+
+{% block title %}About the System | PhishGuard{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <p class="eyebrow">PROJECT INFORMATION</p>
+    <h1>About the <span>System</span></h1>
+    <p>Learn how this student cybersecurity demonstration analyzes URLs.</p>
+</section>
+
+<section class="panel">
+    <h2>Project Overview</h2>
+    <p class="muted">
+        PhishGuard is a Phishing Website Detection System prototype.
+        It examines URL characteristics and identifies warning signs
+        that may be associated with phishing links.
+    </p>
+</section>
+
+<section class="card-grid">
+    <article class="stat-card">
+        <h2>01</h2>
+        <p>URL Feature Extraction</p>
+        <p class="muted">Examines URL length, symbols, domain characteristics,
+        and suspicious keywords.</p>
+    </article>
+
+    <article class="stat-card">
+        <h2>02</h2>
+        <p>Rule-Based Assessment</p>
+        <p class="muted">Uses basic rules to produce a demonstration risk level.</p>
+    </article>
+
+    <article class="stat-card">
+        <h2>03</h2>
+        <p>Scan History</p>
+        <p class="muted">Stores scan records in a local SQLite database.</p>
+    </article>
+</section>
+
+<section class="panel">
+    <h2>Current Implementation</h2>
+    <p class="muted">
+        The current version uses rule-based URL analysis. A trained
+        machine-learning model has not yet been connected. The results
+        are estimates and must not be treated as proof that a website
+        is safe or malicious.
+    </p>
+</section>
+
+<section class="panel">
+    <h2>Technology Stack</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <span>Backend</span>
+            <strong>Python + Flask</strong>
+        </div>
+        <div class="feature-item">
+            <span>Frontend</span>
+            <strong>HTML + CSS + JS</strong>
+        </div>
+        <div class="feature-item">
+            <span>Database</span>
+            <strong>SQLite</strong>
+        </div>
+        <div class="feature-item">
+            <span>Analysis</span>
+            <strong>URL Features</strong>
+        </div>
+    </div>
+</section>
+{% endblock %}

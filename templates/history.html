@@ -1,0 +1,58 @@
+
+{% extends "base.html" %}
+
+{% block title %}Scan History | PhishGuard{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <p class="eyebrow">SCAN RECORDS</p>
+    <h1>Scan <span>History</span></h1>
+    <p>Review URLs analyzed during this session and previous visits.</p>
+</section>
+
+<section class="panel">
+    <h2>Recent URL Scans</h2>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    {% if scans %}
+    <table>
+        <thead>
+            <tr>
+                <th>URL</th>
+                <th>Assessment</th>
+                <th>Risk</th>
+                <th>Date &amp; Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for scan in scans %}
+            <tr>
+                <td>{{ scan["url"] }}</td>
+                <td>{{ scan["result"] }}</td>
+                <td>
+                    <span class="badge
+                        {% if scan['risk'] == 'High' %}badge-high
+                        {% elif scan['risk'] == 'Medium' %}badge-medium
+                        {% else %}badge-low{% endif %}">
+                        {{ scan["risk"] }}
+                    </span>
+                </td>
+                <td>{{ scan["scanned_at"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="{{ url_for('clear_history') }}" method="POST"
+          onsubmit="return confirm('Are you sure you want to clear all scan history?');">
+        <button type="submit">Clear Scan History</button>
+    </form>
+    {% else %}
+        <p class="muted">No scans recorded yet. Visit Home to analyze a URL.</p>
+        <a class="btn" href="{{ url_for('index') }}">Analyze a URL</a>
+    {% endif %}
+</section>
+{% endblock %}

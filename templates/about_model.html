@@ -1,0 +1,118 @@
+```html
+{% extends "base.html" %}
+
+{% block title %}Dashboard | PhishGuard{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <!-- Welcome Section -->
+    <div class="dashboard-hero">
+        <div class="hero-text">
+            <span class="eyebrow">YOUR SECURITY WORKSPACE</span>
+
+            <h1>Welcome to <span>PhishGuard</span> 🛡️</h1>
+
+            <p>
+                Protect yourself from suspicious websites.
+                Analyze URLs and identify possible phishing threats.
+            </p>
+
+            <a href="{{ url_for('index') }}" class="primary-btn">
+                <span>⌕</span> Start URL Scan
+            </a>
+        </div>
+
+        <div class="hero-shield">🛡️</div>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="section-heading">
+        <div>
+            <h2>Security Overview</h2>
+            <p>Everything you need to analyze suspicious links.</p>
+        </div>
+
+        <span class="live-label">
+            <span class="live-dot"></span> SYSTEM READY
+        </span>
+    </div>
+
+    <div class="dashboard-grid">
+
+        <a href="{{ url_for('index') }}" class="feature-card cyan-card">
+            <div class="card-icon">🔍</div>
+            <h3>URL Analysis</h3>
+            <p>Check a website address for suspicious patterns.</p>
+            <span class="card-link">Analyze a URL →</span>
+        </a>
+
+        <a href="{{ url_for('index') }}" class="feature-card purple-card">
+            <div class="card-icon">📊</div>
+            <h3>Risk Assessment</h3>
+            <p>View the risk level and indicators found during a scan.</p>
+            <span class="card-link">Check risk →</span>
+        </a>
+
+        <a href="{{ url_for('history') }}" class="feature-card green-card">
+            <div class="card-icon">🕘</div>
+            <h3>Scan History</h3>
+            <p>Review the URLs you have scanned in this session.</p>
+            <span class="card-link">View history →</span>
+        </a>
+
+        <a href="{{ url_for('about_model') }}" class="feature-card orange-card">
+            <div class="card-icon">⚙️</div>
+            <h3>About the Model</h3>
+            <p>Understand the rules and URL features used for analysis.</p>
+            <span class="card-link">Learn more →</span>
+        </a>
+
+    </div>
+
+    <!-- How it works -->
+    <div class="how-section">
+        <div class="how-heading">
+            <span class="eyebrow">SIMPLE. SMART. SECURE.</span>
+            <h2>How PhishGuard Works</h2>
+            <p>Three simple steps to examine a suspicious URL.</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <h3>Enter a URL</h3>
+                <p>Paste the website link you want to check.</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <h3>Analyze</h3>
+                <p>PhishGuard checks URL patterns and warning signs.</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <h3>View Results</h3>
+                <p>Review the risk assessment and detected indicators.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Tip -->
+    <div class="security-tip">
+        <div class="tip-icon">💡</div>
+        <div>
+            <h3>Security Tip of the Day</h3>
+            <p>
+                Never enter your password, OTP, or banking details on a
+                website unless you have verified its address.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
+```
